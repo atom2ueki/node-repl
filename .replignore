@@ -1,0 +1,11 @@
+# system files
+repl.js
+register.js
+build.js
+
+# node ignore
+./node_modules
+
+# custom ignore
+test_ignore
+app/test_ignore
