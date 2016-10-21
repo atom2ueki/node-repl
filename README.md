@@ -5,7 +5,7 @@ Nodejs console debug tools base on REPL
 
 ## Roadmap
 - [ ] pack it into npm
-- [ ] re-register solution
+- [x] re-register solution
 - [ ] show functions registered
 - [x] auto register functions
 - [x] identify ignore file
@@ -13,8 +13,8 @@ Nodejs console debug tools base on REPL
 ## Testing
 put repl.js, build.js, register.js
 ```
-node build.js
-node repl.js
+npm run build
+npm start
 ```
 
 ctrl+c twice to exit
