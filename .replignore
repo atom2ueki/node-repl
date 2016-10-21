@@ -2,8 +2,10 @@
 repl.js
 register.js
 build.js
+watch.js
 
 # node ignore
+./.git
 ./node_modules
 
 # custom ignore

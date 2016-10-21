@@ -26,5 +26,5 @@ function setup(cb) {
 }
 
 setup(function(file_ignore){
-	register(__dirname, file_ignore);
+	register(__dirname, 'repl.js', file_ignore, true);
 })

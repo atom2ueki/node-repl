@@ -18,29 +18,25 @@ function contains(arr, x) {
   }
 }
 
-function register(file_path, func_name, file_name) {
-	var current_array = [];
-
-	const rl = readline.createInterface({
-	  input: fs.createReadStream('./repl.js'),
-	  terminal: false
-	});
-
-	rl.on('line', function (line) {
-	  if (line.trim() != "") {
-	  	var match = line.trim().match(/("(.*?)")/);
-	  	if (match) {
-	  		current_array.push(String(match[1]).match(/"(.*?)"/)[1]);
-	  	}
-	  }
-	}).on('close', () => {
-		var checker = String(path.join(file_path, file_name));
-		if (!contains(current_array, checker)) {
-			fs.appendFile('./repl.js', '\nvar '+func_name+ ' = require("'+ path.join(file_path, file_name) +'");\nreplServer.context.'+func_name+' = '+func_name+';\n', function (err) {
-				console.log(err);
+function register(repl_file, func_name, file_name) {
+	fs.appendFile(repl_file, '\nvar '+func_name+ ' = require("'+ path.join(__dirname, file_name) +'");\nreplServer.context.'+func_name+' = '+func_name+';\n', function (err) {
+				if (err) throw err;
 			});
-		}
-	});
+}
+
+/***
+*	clean up the existing
+**/
+function cleanup(bool, repl_file, cb) {
+	if (bool) {
+		fs.closeSync(fs.openSync(path.join(__dirname, repl_file), 'w'));
+		fs.appendFile(repl_file, "'use strict'\n\nvar repl = require('repl');\n\nvar replServer = repl.start({\n  prompt: '🤖 Jeeves >>> ',\n});\n", function (err) {
+			if (err) throw err;
+			cb();
+		})
+	} else {
+		cb()
+	}
 }
 
 function filterByJSFormat(obj) {
@@ -55,24 +51,28 @@ function filterJs(files) {
 	return files.filter(filterByJSFormat);
 }
 
-function ignorePathArray(ignore_array) {
+function ignorePathArray(ignorePathArray, ignore_array) {
 	return ignore_array.map(function(ignore_file) {
-		return path.join(__dirname, ignore_file);
+		return path.join(ignorePathArray, ignore_file);
 	})
 }
 
-function default_export(file_path, file_ignore) {
+function default_export(file_path, file_name, file_ignore, bool) {
 	var files_array = fs.readdirSync(file_path);
 	var filtered_ignore_list = files_array.filter(x => file_ignore.indexOf(x) == -1);
 	var filtered_js_list = filterJs(filtered_ignore_list);
-	filtered_js_list.map(file_name => register(file_path, file_name.split('.')[0], file_name));
+	
+	var repl_file_with_path = path.join(__dirname, file_name);
+
+	// clean and re-register the new files added
+	cleanup(bool, file_name, ()=> filtered_js_list.map(map_file_name => register(repl_file_with_path, map_file_name.split('.')[0], map_file_name)));
 
 	files_array.forEach(file => {
 		var sub_file_path = path.join(file_path,file);
 		// check wheater this path inside ignore list or not
 		var stat = fs.lstatSync(sub_file_path);
-		if (stat.isDirectory() && !contains(ignorePathArray(file_ignore), sub_file_path)) {
-			default_export(sub_file_path, file_ignore);
+		if (stat.isDirectory() && !contains(ignorePathArray(__dirname, file_ignore), sub_file_path)) {
+			default_export(sub_file_path, file_name, file_ignore, false);
 		}
 	})
 }
