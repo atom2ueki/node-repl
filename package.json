@@ -1,5 +1,5 @@
 {
-  "name": "jeeves-repl",
+  "name": "node-repl",
   "version": "1.0.0",
   "description": "",
   "main": "my-repl.js",
