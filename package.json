@@ -8,8 +8,5 @@
     "start": "node repl.js"
   },
   "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "moment": "^2.15.1"
-  }
+  "license": "ISC"
 }
