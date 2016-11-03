@@ -18,8 +18,8 @@ function contains(arr, x) {
   }
 }
 
-function register(repl_file, func_name, file_name) {
-	fs.appendFile(repl_file, '\nvar '+func_name+ ' = require("'+ path.join(__dirname, file_name) +'");\nreplServer.context.'+func_name+' = '+func_name+';\n', function (err) {
+function register(repl_file, file_path, func_name, file_name) {
+	fs.appendFile(repl_file, '\nvar '+func_name+ ' = require("'+ path.join(file_path, file_name) +'");\nreplServer.context.'+func_name+' = '+func_name+';\n', function (err) {
 				if (err) throw err;
 			});
 }
@@ -65,7 +65,7 @@ function default_export(file_path, file_name, file_ignore, bool) {
 	var repl_file_with_path = path.join(__dirname, file_name);
 
 	// clean and re-register the new files added
-	cleanup(bool, file_name, ()=> filtered_js_list.map(map_file_name => register(repl_file_with_path, map_file_name.split('.')[0], map_file_name)));
+	cleanup(bool, file_name, ()=> filtered_js_list.map(map_file_name => register(repl_file_with_path, file_path, map_file_name.split('.')[0], map_file_name)));
 
 	files_array.forEach(file => {
 		var sub_file_path = path.join(file_path,file);

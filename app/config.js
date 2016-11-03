@@ -1,3 +1,3 @@
 module.exports = {
-	url: "www.stacck.com/api/v2"
+	url: "www.node-repl.com"
 }
