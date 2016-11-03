@@ -1,4 +1,4 @@
-# Jeeves-REPL
+# Node-REPL
 Nodejs console debug tools base on REPL
 
 ## Roadmap
