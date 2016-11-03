@@ -7,6 +7,7 @@ Nodejs console debug tools base on REPL
 - [ ] show functions registered
 - [x] auto register functions
 - [x] identify ignore file
+- [ ] watch file changes
 
 ## Testing
 put repl.js, build.js, register.js
