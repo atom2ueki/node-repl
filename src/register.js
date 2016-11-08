@@ -30,7 +30,7 @@ function register(repl_file, file_path, func_name, file_name) {
 function cleanup(bool, repl_file, cb) {
 	if (bool) {
 		fs.closeSync(fs.openSync(path.join(__dirname, repl_file), 'w'));
-		fs.appendFile(repl_file, "'use strict'\n\nvar repl = require('repl');\n\nvar replServer = repl.start({\n  prompt: '🤖 Jeeves >>> ',\n});\n", function (err) {
+		fs.appendFile(path.join(__dirname, repl_file), "'use strict'\n\nvar repl = require('repl');\n\nvar replServer = repl.start({\n  prompt: '🤖 Jeeves >>> ',\n});\n", function (err) {
 			if (err) throw err;
 			cb();
 		})
@@ -57,7 +57,11 @@ function ignorePathArray(ignorePathArray, ignore_array) {
 	})
 }
 
-function default_export(file_path, file_name, file_ignore, bool) {
+function default_export(file_name, file_path, file_ignore, bool) {
+	// console.log("file path: "+ file_path)
+	// console.log(ignorePathArray(__dirname, file_ignore))
+	// console.log(file_ignore)
+
 	var files_array = fs.readdirSync(file_path);
 	var filtered_ignore_list = files_array.filter(x => file_ignore.indexOf(x) == -1);
 	var filtered_js_list = filterJs(filtered_ignore_list);
@@ -71,6 +75,7 @@ function default_export(file_path, file_name, file_ignore, bool) {
 		var sub_file_path = path.join(file_path,file);
 		// check wheater this path inside ignore list or not
 		var stat = fs.lstatSync(sub_file_path);
+		console.log(stat.isDirectory())
 		if (stat.isDirectory() && !contains(ignorePathArray(__dirname, file_ignore), sub_file_path)) {
 			default_export(sub_file_path, file_name, file_ignore, false);
 		}

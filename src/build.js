@@ -15,16 +15,18 @@ const fs = require('fs');
 function setup(cb) {
 	var ignore_array = [];
 	const reader = readline.createInterface({
-	  input: fs.createReadStream('./.replignore'),
+	  input: fs.createReadStream(path.join(__dirname, '../.replignore')),
 	  terminal: false
 	});
 	reader.on('line', function (line) {
-	  if (line.trim().match(/^#.*$/) == null) {
-	  	ignore_array.push(line.trim());
+	  if (line.trim().match(/^#.*$/) == null && line.trim() != "") {
+	  	ignore_array.push(path.join(__dirname, "../"+line.trim()));
 	  }
 	}).on('close', () => cb(ignore_array));
 }
 
 setup(function(file_ignore){
-	register(__dirname, 'repl.js', file_ignore, true);
+	// console.log(file_ignore)
+	register('repl.js', process.cwd(), file_ignore, true);
+	// register('repl.js', __dirname, file_ignore, true);
 })
