@@ -1,13 +1,13 @@
 # system files
 repl.js
-register.js
-build.js
-watch.js
+index.js
+src
 
 # node ignore
-./.git
-./node_modules
+.git
+.DS_Store
+node_modules
 
-# custom ignore
-test_ignore
-app/test_ignore
+# test ignore
+test/ignore
+test/app/ignore

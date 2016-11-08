@@ -6,7 +6,7 @@
   "alwaysNotifyForPaths": [
     {
       "name": "atom2ueki", // The user's Github username
-      "files": ["./repl.js", "./register.js", "./build.js"], // The array of file globs associated with the user
+      "files": ["./src/*.js"], // The array of file globs associated with the user
       "skipTeamPrs": false // mention-bot will exclude the creator's own team from mentions
     }
   ], // users will always be mentioned based on file glob
