@@ -15,15 +15,15 @@ repl.run(project_root_path)
 
 ```
 
-ctrl+c twice to exit
+ctrl+c twice or ctrl+d to exit
 
 ## Roadmap
-- [ ] pack it into npm
+- [x] pack it into npm
 - [x] re-register solution
 - [x] add test file
-- [ ] show functions registered
 - [x] auto register functions
 - [x] identify ignore file
+- [ ] show functions registered
 - [ ] watch file changes
 
 ## Testing
