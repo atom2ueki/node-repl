@@ -1,14 +1,19 @@
-# Node-REPL
-Nodejs console debug tools base on REPL
+# Node-REPL-Tool
+A project based auto generated NodeJS REPL tool
 
 ## How it looks like
-<!-- <img src="https://github.com/atom2ueki/node-repl/blob/master/sample.png" width="250"> -->
+<img src="https://github.com/atom2ueki/node-repl/blob/master/sample.png" width="250">
 
 ## How to use / test
-- Step1: define your .replignore file, just like .gitignore, so node-repl will ignore those path or files
-- Step2: copy repl.js, build.js, register.js into your project root directory
-- Step3: node build.js
-- Step4: node repl.js
+- Step1: `npm install node-repl-tool --save-dev`
+- Step2: define your .replignore file, just like .gitignore, so node-repl will ignore those path or files
+- Step3: init node-repl-tool
+```
+var repl = require('../src/index');
+var project_root_path = __dirname
+repl.run(project_root_path)
+
+```
 
 ctrl+c twice to exit
 
@@ -22,8 +27,6 @@ ctrl+c twice to exit
 - [ ] watch file changes
 
 ## Testing
-put repl.js, build.js, register.js
 ```
-npm run build
-npm start
+npm test
 ```

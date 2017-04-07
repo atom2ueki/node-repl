@@ -1,3 +1,10 @@
+/*!
+ * test.js
+ * Licensed under the MIT license
+ *
+ * Copyright (c) 2017 Tony Li
+ */
+
 "use strict"
 
 const fs = require('fs');
