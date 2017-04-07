@@ -4,8 +4,8 @@
   "description": "",
   "main": "my-repl.js",
   "scripts": {
-    "build": "node build.js",
-    "start": "node repl.js"
+    "generate": "node ./src/generator.js",
+    "start": "node ./src/repl.js"
   },
   "author": "",
   "license": "ISC"

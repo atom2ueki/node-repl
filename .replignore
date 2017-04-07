@@ -1,7 +1,7 @@
 # system files
 repl.js
 register.js
-build.js
+generator.js
 watch.js
 
 # node ignore
