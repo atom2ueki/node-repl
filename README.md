@@ -2,7 +2,7 @@
 Nodejs console debug tools base on REPL
 
 ## How it looks like
-<img src="https://github.com/atom2ueki/node-repl/blob/master/sample.png" width="250">
+<!-- <img src="https://github.com/atom2ueki/node-repl/blob/master/sample.png" width="250"> -->
 
 ## How to use / test
 - Step1: define your .replignore file, just like .gitignore, so node-repl will ignore those path or files
@@ -15,6 +15,7 @@ ctrl+c twice to exit
 ## Roadmap
 - [ ] pack it into npm
 - [x] re-register solution
+- [x] add test file
 - [ ] show functions registered
 - [x] auto register functions
 - [x] identify ignore file

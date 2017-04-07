@@ -18,8 +18,8 @@ function contains(arr, x) {
   }
 }
 
-function write(repl_file, file_path, func_name, file_name) {
-	fs.appendFile(repl_file, '\nvar '+func_name+ ' = require("'+ path.join(file_path, file_name) +'");\nreplServer.context.'+func_name+' = '+func_name+';\n', function (err) {
+function write(file_path, repl_file, func_name, file_name) {
+	fs.appendFile(path.join(file_path, repl_file), '\nvar '+func_name+ ' = require("'+ path.join(file_path, file_name) +'");\nreplServer.context.'+func_name+' = '+func_name+';\n', function (err) {
 				if (err) throw err;
 			});
 }
@@ -57,20 +57,20 @@ function ignorePathArray(ignorePathArray, ignore_array) {
 	})
 }
 
-function register(root_path, file_name, file_ignore, bool) {
-	var files_array = fs.readdirSync(root_path);
+function register(root_path, search_path, file_name, file_ignore, bool) {
+	var files_array = fs.readdirSync(search_path);
 	var filtered_ignore_list = files_array.filter(x => file_ignore.indexOf(x) == -1);
 	var filtered_js_list = filterJs(filtered_ignore_list);
-
+	// console.log(filtered_js_list)
 	// clean and re-register the new files added
-	cleanup(bool, root_path, file_name, ()=> filtered_js_list.map(map_file_name => write(file_name, root_path, map_file_name.split('.')[0], map_file_name)));
+	cleanup(bool, root_path, file_name, ()=> filtered_js_list.map(map_file_name => write(root_path, file_name, map_file_name.split('.')[0], map_file_name)));
 
 	files_array.forEach(file => {
-		var sub_file_path = path.join(root_path,file);
+		var sub_file_path = path.join(search_path, file);
 		// check wheater this path inside ignore list or not
 		var stat = fs.lstatSync(sub_file_path);
 		if (stat.isDirectory() && !contains(ignorePathArray(root_path, file_ignore), sub_file_path)) {
-			register(sub_file_path, file_name, file_ignore, false);
+			register(root_path, sub_file_path, file_name, file_ignore, false);
 		}
 	})
 }

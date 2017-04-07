@@ -1,3 +1,3 @@
 module.exports = {
-	people: "im"
+	people: "am"
 }

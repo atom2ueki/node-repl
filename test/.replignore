@@ -1,13 +1,14 @@
-# system files
+# project files
 repl.js
 register.js
 generator.js
 watch.js
+test.js
 
 # node ignore
 ./.git
 ./node_modules
 
 # custom ignore
-test_ignore
-app/test_ignore
+_ignore
+_app/_subdir_ignore

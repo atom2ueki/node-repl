@@ -1,3 +1,3 @@
 module.exports = {
-	key: "we won!"
+	key: "subdir_test"
 }

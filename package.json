@@ -1,12 +1,17 @@
 {
   "name": "node-repl",
   "version": "1.0.0",
-  "description": "",
+  "description": "an awesome NodeJS missed debug tool",
   "main": "my-repl.js",
   "scripts": {
     "generate": "node ./src/generator.js",
-    "start": "node ./src/repl.js"
+    "start": "node ./src/repl.js",
+    "test": "./node_modules/.bin/mocha ./test/test.js"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "Tony Li atom2ueki@gmail.com",
+  "license": "ISC",
+  "devDependencies": {
+    "mocha": "^3.2.0",
+    "should": "^11.2.1"
+  }
 }
