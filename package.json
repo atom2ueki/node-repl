@@ -1,5 +1,5 @@
 {
-  "name": "node-repl",
+  "name": "node-repl-tool",
   "version": "1.5.0",
   "description": "A project based auto generated NodeJS REPL tool",
   "main": "./src/index.js",
