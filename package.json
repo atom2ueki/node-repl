@@ -4,8 +4,7 @@
   "description": "an awesome NodeJS missed debug tool",
   "main": "my-repl.js",
   "scripts": {
-    "generate": "node ./src/generator.js",
-    "start": "node ./src/repl.js",
+    "start": "npm test && node ./test/repl.js",
     "test": "./node_modules/.bin/mocha ./test/test.js"
   },
   "author": "Tony Li atom2ueki@gmail.com",

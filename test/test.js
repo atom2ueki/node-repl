@@ -18,11 +18,11 @@ function fileContains(file_path, file_name, content, cb) {
 }
 
 describe('😎 start testing >>>', function() {
-
-	describe('basic functional testing >>>', function() {
-		before(function(){
-			repl.run(project_root_path)
-		})
+  before(function(){
+    repl.run(project_root_path)
+  })
+  
+	describe('writing testing >>>', function() {
 
   	it('she.js should excluded from repl.js, issue from ignore folder', function(done) {
       fileContains(project_root_path, 'repl.js', 'she.js', function(err, res) {
@@ -71,5 +71,9 @@ describe('😎 start testing >>>', function() {
       	done()
       })
     })
+  })
+
+  describe('path testing >>>', function() {
+    
   })
 })
