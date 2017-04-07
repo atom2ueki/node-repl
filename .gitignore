@@ -1,5 +1,7 @@
 # Project
 test/repl.js
+sample/repl.js
+sample/node_modules
 
 # Logs
 logs

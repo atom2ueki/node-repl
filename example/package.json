@@ -1,0 +1,15 @@
+{
+  "name": "node-repl-tool-example",
+  "version": "1.0.0",
+  "description": "a real example of how to use auto repl tool",
+  "main": "example.js",
+  "scripts": {
+    "start": "node example.js",
+    "repl": "node repl.js"
+  },
+  "author": "Tony Li <atom2ueki@gmail.com> (https://www.atom2ueki.com/)",
+  "license": "MIT",
+  "devDependencies": {
+    "node-repl-tool": "^1.5.0"
+  }
+}

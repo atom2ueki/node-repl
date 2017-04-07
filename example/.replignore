@@ -1,6 +1,6 @@
 # project files
 repl.js
-test.js
+example.js
 
 # node ignore
 ./.git
