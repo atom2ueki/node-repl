@@ -15,7 +15,7 @@ repl.run(project_root_path)
 
 ```
 
-ctrl+c twice to exit
+ctrl+c twice or ctrl+d to exit
 
 ## Roadmap
 - [ ] pack it into npm
