@@ -1,4 +1,6 @@
 # Node-REPL-Tool
+[![travis build](https://api.travis-ci.org/atom2ueki/node-repl-tool.svg?branch=master)](https://travis-ci.org/atom2ueki//node-repl-tool)
+
 A project based auto generated NodeJS REPL tool
 
 ## How it looks like
@@ -20,7 +22,7 @@ ctrl+c twice or ctrl+d to exit
 ## Roadmap
 - [x] pack it into npm
 - [x] re-register solution
-- [x] add test file
+- [x] add mocha test cases
 - [x] auto register functions
 - [x] identify ignore file
 - [ ] show functions registered
