@@ -1,8 +1,6 @@
 # project files
+src
 repl.js
-register.js
-generator.js
-watch.js
 test.js
 
 # node ignore

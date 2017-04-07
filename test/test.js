@@ -17,12 +17,12 @@ function fileContains(file_path, file_name, content, cb) {
 	})
 }
 
-describe('😎 start testing >>>', function() {
+describe('😎  start testing >>>', function() {
   before(function(){
     repl.run(project_root_path)
   })
   
-	describe('writing testing >>>', function() {
+	describe('💯  file exist testing >>>', function() {
 
   	it('she.js should excluded from repl.js, issue from ignore folder', function(done) {
       fileContains(project_root_path, 'repl.js', 'she.js', function(err, res) {
@@ -73,7 +73,21 @@ describe('😎 start testing >>>', function() {
     })
   })
 
-  describe('path testing >>>', function() {
-    
+  describe('🚸  path testing >>>', function() {
+    it('a.js path should be __dirname + a.js', function(done) {
+      fileContains(project_root_path, 'repl.js', path.join(project_root_path, 'a.js'), function(err, res) {
+        if (err) return done(err)
+        res.should.equal(true)
+        done()
+      })
+    })
+
+    it('b.js path should be __dirname + _app/b.js', function(done) {
+      fileContains(project_root_path, 'repl.js', path.join(project_root_path, '_app/b.js'), function(err, res) {
+        if (err) return done(err)
+        res.should.equal(true)
+        done()
+      })
+    })
   })
 })
